@@ -86,28 +86,13 @@ timer_elapsed (int64_t then)
 
 /* Sleeps for approximately TICKS timer ticks.  Interrupts must
    be turned on. */
-
-// void avoid_busy_waiting(int64_t ticks){
-//   thread_current()->numOfTicks = ticks;
-//   enum intr_level old_level = intr_disable();
-//   thread_block();
-//   intr_set_level(old_level);
-// }
-
 void
 timer_sleep (int64_t ticks) 
 {
-  // int64_t start = timer_ticks ();
+  int start = timer_ticks();
   ASSERT (intr_get_level () == INTR_ON);
-
-  thread_current()->sleep_ticks = ticks;
-  enum intr_level old_level = intr_disable();
-  thread_block();
-  intr_set_level(old_level);
-
-  // while (timer_elapsed (start) < ticks) 
-  //   thread_yield ();
-
+  ASSERT(intr_get_level() == INTR_ON);
+  thread_sleep(start+ticks);
 }
 
 /* Sleeps for approximately MS milliseconds.  Interrupts must be
@@ -180,30 +165,6 @@ timer_print_stats (void)
   printf ("Timer: %"PRId64" ticks\n", timer_ticks ());
 }
 
-/**
-* Function for waking up a sleeping thread. It checks
-* whether a thread is being blocked. If TRUE, then
-* check whether the thread's sleep_ticks has reached 0 or not
-* by decrementing it on each conditional statement.
-* If the thread's sleep_ticks has reached 0, then unblock the
-* sleeping thread.
-*/
-static void
-wake_threads(struct thread *t, void *aux)
-{
- if(t->status == THREAD_BLOCKED)
- {
-  if(t->sleep_ticks > 0)
-  {
-   t->sleep_ticks--;
-   if(t->sleep_ticks == 0)
-   {
-    thread_unblock(t);
-   }
-  }
- }
-}
-
 /* Timer interrupt handler. */
 static void
 timer_interrupt (struct intr_frame *args UNUSED)
