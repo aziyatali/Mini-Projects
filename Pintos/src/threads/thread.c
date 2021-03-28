@@ -70,6 +70,7 @@ static void *alloc_frame (struct thread *, size_t size);
 static void schedule (void);
 void thread_schedule_tail (struct thread *prev);
 static tid_t allocate_tid (void);
+static void handle_prioritizing(void);
 
 /* Initializes the threading system by transforming the code
    that's currently running into a thread.  This can't work in
@@ -208,7 +209,7 @@ thread_create (const char *name, int priority,
 
   /* Add to run queue. */
   thread_unblock (t);
-
+  handle_prioritizing();
   return tid;
 }
 
@@ -344,6 +345,7 @@ void
 thread_set_priority (int new_priority) 
 {
   thread_current ()->priority = new_priority;
+  handle_prioritizing();
 }
 
 /* Returns the current thread's priority. */
@@ -493,10 +495,25 @@ alloc_frame (struct thread *t, size_t size)
 static struct thread *
 next_thread_to_run (void) 
 {
-  if (list_empty (&ready_list))
+  if (list_empty (&ready_list)) {
     return idle_thread;
-  else
-    return list_entry (list_pop_front (&ready_list), struct thread, elem);
+  }
+  int max_priority = -1;
+  struct thread *ret_thread;
+  struct list_elem *e;
+
+  for (e = list_begin (&ready_list); e != list_end (&ready_list);
+        e = list_next (e))
+  {
+      struct thread *t = list_entry (e, struct thread, elem);
+      int cur_priority = t -> priority;
+      if (max_priority < cur_priority) {
+        max_priority = cur_priority;
+        ret_thread = t;
+      }
+  }  
+  list_remove (&ret_thread -> elem);
+  return ret_thread;
 }
 
 /* Completes a thread switch by activating the new thread's page
@@ -582,6 +599,24 @@ allocate_tid (void)
   return tid;
 }
 
+
+static void 
+handle_prioritizing(void) {
+  struct list_elem *e;
+  int max_priority = -1;
+  for (e = list_begin (&ready_list); e != list_end (&ready_list);
+        e = list_next (e))
+  {
+      struct thread *t = list_entry (e, struct thread, elem);
+      int cur_priority = t->priority;
+      if (max_priority < cur_priority) {
+        max_priority = cur_priority;
+      }
+  }
+  if (thread_get_priority() < max_priority) {
+    thread_yield();
+  }
+}
 /* Offset of `stack' member within `struct thread'.
    Used by switch.S, which can't figure it out on its own. */
 uint32_t thread_stack_ofs = offsetof (struct thread, stack);

@@ -84,7 +84,6 @@ struct thread
   {
     /* Owned by thread.c. */
     tid_t tid;                          /* Thread identifier. */
-    int64_t sleep_ticks;
     enum thread_status status;          /* Thread state. */
     char name[16];                      /* Name (for debugging purposes). */
     uint8_t *stack;                     /* Saved stack pointer. */
@@ -102,9 +101,6 @@ struct thread
     /* Owned by thread.c. */
     unsigned magic;                     /* Detects stack overflow. */
   };
-
-
-struct thread_sleep(int64_t ticks);
 
 /* If false (default), use round-robin scheduler.
    If true, use multi-level feedback queue scheduler.
