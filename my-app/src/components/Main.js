@@ -4,10 +4,10 @@ import React, {Component} from 'react';
 class Main extends Component{
     render(){
         return(
-            <div className = "button">
-                <p1>
-                    Here is a main page
-                </p1>
+            <div>
+                <h1>
+                    This is completly new Page!
+                </h1>
             </div>
         )
     }

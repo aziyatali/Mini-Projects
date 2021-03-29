@@ -1,10 +1,22 @@
+import { render } from '@testing-library/react';
 import './App.css';
 import Main from './components/Main'
+
+const mainPage = () =>{ 
+      return(
+      <div>
+          <Main/>
+      </div>
+    )
+}
 
 function App() {
   return (
     <div className="App">
-      <Main/>
+      <button className = "button" onClick = {mainPage}>
+      Main
+      </button>
+      
       <header className="App-header">
         <p>
           Edit <code>src/App.js</code> and save to reload.
