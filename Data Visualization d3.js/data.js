@@ -4,6 +4,17 @@ const DATA = [
     {id: "d3", value: 15, region: 'KGZ'},
     {id: "d4", value: 11, region: 'KAZ'}];
 
+//const DATA = [];
+d3.csv("employee.csv", function(error, data) {
+    // for (var i = 0; i < data.length; i++){
+    //     DATA.push_back(data[i]);
+    // }
+    if (error){
+        console.log("Error occured");
+    }
+    console.log(data);
+});
+
 const xScale = d3.scaleBand()
     .domain(DATA.map((dta) => dta.region))
     .rangeRound([0, 600])
