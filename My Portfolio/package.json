@@ -2,7 +2,7 @@
   "name": "iskhakasan",
   "version": "1.1.0",
   "private": false,
-  "homepage": "https://asanoviskhak.github.io",
+  "homepage": "https://localhost:3000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -21,7 +21,7 @@
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-script-tag": "^1.1.2",
-    "react-scripts": "4.0.0",
+    "react-scripts": "^4.0.0",
     "sass": "^1.26.11",
     "telegraph-node": "^1.0.4",
     "typewriter-effect": "^2.13.1",
