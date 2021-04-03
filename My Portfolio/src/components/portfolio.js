@@ -15,31 +15,34 @@ import Me from './images/Me.jpg'
 import {TimelineLite, Power3, TweenLite} from 'gsap'
 
 var pfolio = new Map();
-pfolio=[
-    {
-        "image": "https://picsum.photos/500/400",
-        "type":"Full-stack",
-        "title":"Website for Leaf OCS",
-        "description": "Introductory website for the Organic Cleaning company in Bellevue, Washington.",
-        "url":"https://leafocs.com"
-    },
-    {
-        "image": "https://picsum.photos/500/400",
-        "type":"Full-stack",
-        "title":'Website for Consulting Company "Ask"',
-        "description": "Website where customers are able to contact with company's staff, alongside learn about programs the company offer.",
-        "url":"https://ask.kg"
-    },
-    {
-        "image": "https://picsum.photos/500/400",
-        "type":"UI/UX",
-        "title":'Carpooling application "KETTIK"',
-        "description": 'UI and UX design for mobile app "KETTIK", currently deprecated',
-        "url":"https://www.figma.com/file/RmhRt1KhbxgPaRFwOhd46RoS/Kettik-1?node-id=0%3A1"
-    },
-    
+pfolio= [
+  {
+      "type":"Data Visualization with D3.js",
+      "title":"Bouncing Ball",
+      "description": "D3.js, Javascript, CSS",
+      "url":"https://github.com/aziyatali/Mini-Projects/tree/main/Bouncing%20Ball%20d3.js"
+  },
+  {
+      "type": "Building Calculator interface with C++",
+      "title": "Scientific Calcualtor with advances function for scientists and engineers",
+      "description": "Built by using OOP in C++ ",
+      "url": "https://github.com/aziyatali/Mini-Projects/tree/main/Scientific%20Calculator"
+  },
+  {
+      "type": "Full Stack app for language exchanging",
+      "title": "Learning other languages from native speakers by helping them to learn your language",
+      "description": "React, Node.js, Bootstrap, Postgresql",
+      "url": "https://github.com/aziyatali/Mini-Projects/tree/main/my-app" 
+  },
+  {
+      
+      "type": "Server Client Communication with Python",
+      "title": "Server Client Communication",
+      "description": "Python",
+      "url": "https://github.com/aziyatali/Mini-Projects/tree/main/Server%20Client%20Communication" 
+  },
 ]
-
+console.log("Portfolio", pfolio);
 export default function Portfolio(){
 
     // let imageReveal = CSSRulePlugin.getRule('.img-container:after');
@@ -49,14 +52,15 @@ export default function Portfolio(){
     //     .from(image, 1.4, {scale: 1.6, ease: Power2.easeInOut, delay: -1.6})
     // })
     
-    let imageList = useRef(null);
+  let imageList = useRef(null);
   let descList = useRef(null);
   const imageWidth = 530;
 
   const [state, setState] = useState({
     isActive1: true,
     isActive2: false,
-    isActive3: false
+    isActive3: false,
+    isActive4: false
   });
 
   useEffect(() => {
@@ -113,6 +117,7 @@ export default function Portfolio(){
       slideLeft(2, 0);
       fadeOut(0, 1);
       fadeIn(1, 1);
+      console.log("imageList: ", imageList);
     } else if (imageList.children[1].classList.contains("active-slide")) {
       setState({ isActive2: false, isActive3: true });
       //Image transition
@@ -124,7 +129,17 @@ export default function Portfolio(){
       fadeOut(1, 1);
       fadeIn(2, 1);
     } else if (imageList.children[2].classList.contains("active-slide")) {
-      setState({ isActive1: true, isActive3: false });
+      setState({ isActive3: false, isActive4: true });
+      //Image transition
+      slideRight(0, 1);
+      slideLeft(1, 1, 2);
+      slideLeft(2, 1, 2);
+      scale(2, 1);
+      //content transition
+      fadeOut(1, 1);
+      fadeIn(2, 1);
+    }else if (imageList.children[3].classList.contains("active-slide")) {
+      setState({ isActive1: true, isActive4: false });
       //Image transition
       slideLeft(2, 1, 3);
       slideLeft(0, 1, 0);
@@ -138,7 +153,7 @@ export default function Portfolio(){
 
   const prevSlide = () => {
     if (imageList.children[0].classList.contains("active-slide")) {
-      setState({ isActive1: false, isActive3: true });
+      setState({ isActive1: false, isActive4: true });
       //Image transition
       slideLeft(2, 0, 3);
       slideLeft(2, 1, 2);
@@ -149,7 +164,7 @@ export default function Portfolio(){
       fadeOut(0, 1);
       fadeIn(2, 1);
     } else if (imageList.children[1].classList.contains("active-slide")) {
-      setState({ isActive2: false, isActive1: true });
+      setState({ isActive3: false, isActive2: true });
       //Image transition
       slideLeft(0, 0);
       slideRight(0, 1, 0);
@@ -160,6 +175,15 @@ export default function Portfolio(){
       fadeOut(1, 1);
       fadeIn(0, 1);
     } else if (imageList.children[2].classList.contains("active-slide")) {
+      setState({ isActive2: false, isActive1: true });
+      slideLeft(2, 1);
+      slideLeft(1, 0, 2);
+      slideLeft(1, 1);
+      scale(1, 1);
+      //content transtion
+      fadeOut(2, 1);
+      fadeIn(1, 1);
+    }else if (imageList.children[3].classList.contains("active-slide")) {
       setState({ isActive2: true, isActive3: false });
       slideLeft(2, 1);
       slideLeft(1, 0, 2);
@@ -179,13 +203,12 @@ export default function Portfolio(){
                 <div className="proj-image">
                     <ul ref={el => (imageList = el)}>
                         <li className={state.isActive1 ? 'active-slide':''}>
-                            <img src={pfolio[0].image} alt="project1"/>
                         </li>
                         <li className={state.isActive2 ? 'active-slide':''}>
-                            <img src={pfolio[1].image} alt="project2"/>
                         </li>
                         <li className={state.isActive3 ? 'active-slide':''}>
-                            <img src={pfolio[2].image} alt="project3"/>
+                        </li>
+                        <li className={state.isActive4 ? 'active-slide':''}>
                         </li>
                     </ul>
                 </div>
@@ -194,15 +217,19 @@ export default function Portfolio(){
                         <ul ref={el => (descList = el)}>
                             <li>
                                 <h2 className="proj-title">{pfolio[0].title}</h2>
-                                <p classname="proj-description">{pfolio[0].description}</p>
+                                <p className="proj-description">{pfolio[0].description}</p>
                             </li>
                             <li>
                                 <h2 className="proj-title">{pfolio[1].title}</h2>
-                                <p classname="proj-description">{pfolio[1].description}</p>
+                                <p className="proj-description">{pfolio[1].description}</p>
                             </li>
                             <li>
                                 <h2 className="proj-title">{pfolio[2].title}</h2>
-                                <p classname="proj-description">{pfolio[2].description}</p>
+                                <p className="proj-description">{pfolio[2].description}</p>
+                            </li>
+                            <li>
+                                <h2 className="proj-title">{pfolio[3].title}</h2>
+                                <p className="proj-description">{pfolio[3].description}</p>
                             </li>
                         </ul>
                     </div>

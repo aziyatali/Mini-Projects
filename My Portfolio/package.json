@@ -1,8 +1,8 @@
 {
-  "name": "iskhakasan",
+  "name": "azimuth",
   "version": "1.1.0",
   "private": false,
-  "homepage": "https://localhost:3000",
+  "homepage": "http://localhost:3000/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
