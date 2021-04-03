@@ -1,4 +1,4 @@
-
+import EmailShare from 'react-email-share-link'
 import React,{Component} from 'react';
 import GetInTouch from '../components/images/getInTouch.svg'
 
@@ -10,11 +10,10 @@ export default class Footer extends Component{
                 <div className="footer">
                 <hr className="horizontal-line"></hr>
                 <ul className="cursor-item-link">
-                    <li><a className="link" href="https://github.com/asanoviskhak">github</a></li>
-                    <li><a className="link" href="https://github.com/asanoviskhak">github</a></li>
-                    <li><a className="link" href="https://github.com/asanoviskhak">github</a></li>
-                    <li><a className="link" href="https://github.com/asanoviskhak">github</a></li>
-                    <li><a className="link" href="https://github.com/asanoviskhak">github</a></li>
+                    <li><a className="link" href="https://github.com/aziyatali">github</a></li>
+                    <li><a className="link" href="https://www.linkedin.com/in/aziyatali/">Linkedin</a></li>
+                    <li><a className="link" href="https://t.me/aziyatali">Telegram</a></li>
+                    <li><a className="link" href="https://www.facebook.com/aziyatali/">Facebook</a></li>
                 </ul>
                 </div>
             </div>

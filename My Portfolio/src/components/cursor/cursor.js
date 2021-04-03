@@ -67,7 +67,7 @@ export default class Cursor{
 
     scaleAnimation(el, amt){
         gsap.to( el, {
-            duration: 0.6,
+            duration: 1,
             scale: amt,
             ease: "Power3.easeOut",
         })
