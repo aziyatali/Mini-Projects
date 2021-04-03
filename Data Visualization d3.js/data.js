@@ -1,42 +1,38 @@
-const DATA = [
-    {id: "d1", value: 10, region: 'USA'},
-    {id: "d2", value: 14, region: 'KOR'},
-    {id: "d3", value: 15, region: 'KGZ'},
-    {id: "d4", value: 11, region: 'KAZ'}];
+const DATA = [1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016];
+const myData = {"year": [1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016],
+"population": [9213447.532,9174599.225,9475006.614,10002664.72,10533974.49,11100889.81,11671138.55,12084923.72,12741086.08,13606233.24,14868220.29,15492671.32,16238823.39,17116849.95,17098937.48,17175195.21,18089266.73,18675683.25,19394075.03,19918489.08,19856785.5,19353115.05,19291681.29,19504737.99,20090639.76,20862411.95,21154325.03,21773897.27,22673248.6,23072852.37,22421693.58,22706192.92,21543190.62,21779484.8,21853093.14,22270728.56,22899608.22,22986911.7,22845753.27,23218433.47,23918172.19,24101535.28,24634020.26,25893535.03,27106644.13,28043870.88,29021469.96,29513157.39,30680656.02,29915812.4,31927784.12,33090763.41,33683606.85,33848272.8,34103192.88,34040671.31,33819401.16]
+};
+//console.log(myData.population);
 
-//const DATA = [];
-d3.csv("employee.csv", function(error, data) {
-    // for (var i = 0; i < data.length; i++){
-    //     DATA.push_back(data[i]);
-    // }
-    if (error){
-        console.log("Error occured");
-    }
-    console.log(data);
-});
 
 const xScale = d3.scaleBand()
-    .domain(DATA.map((dta) => dta.region))
+    .domain(DATA.map((dta) => dta))
     .rangeRound([0, 600])
     .padding(0.1);
+//console.log("xScale: ", xScale );
 
-const yScale = d3.scaleLinear().domain([0, 20]).range([400, 0])
+const yScale = d3.scaleLinear().domain([0, 2020]).range([400, 0])
 
+//console.log("yScale: ", yScale );
 
 const container = d3.select('svg')
     .classed('container', true);
 
+//console.log("Container: ", container);
 const bars = container
     .selectAll('.bar') 
     .data(DATA)
     .enter()
     .append('rect')
     .classed('bar', true)
-    .attr('height', data => 400 - yScale(data.value)) // it starts with top left so we want bottom left
+    .attr('height', data => 400 - yScale(DATA.map((dta) => dta))) // it starts with top left so we want bottom left
     .attr('width', xScale.bandwidth())
-    .attr('x', data => xScale(data.region))
-    .attr('y', data => yScale(data.value));
+    .attr('x', data => xScale(data.length))
+    .attr('y', data => yScale(data.map((dta) => dta)));
 
-    setTimeout(() => {
-        bars.data(DATA.slice(0,2)).exit().remove();
-    }, 2000)
+//console.log("bars: ", bars);
+    // setTimeout(() => {
+    //     bars.data(DATA.slice(0,2)).exit().remove();
+    // }, 2000)
+
+ 

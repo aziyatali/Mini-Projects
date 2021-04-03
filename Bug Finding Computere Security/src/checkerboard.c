@@ -10,6 +10,7 @@ int main(int argc, char *argv[]) {
     goto error;
   }
 
+
   /* Name the arguments */
 
   const char *output_name = argv[1];
@@ -116,8 +117,9 @@ int main(int argc, char *argv[]) {
       }
     }
   }
-
+  printf("Does it comes here/n");
   store_png(output_name, img, palette, 2);
+
 
   free(img->px);
   free(img);

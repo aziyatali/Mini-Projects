@@ -7,3 +7,10 @@
 .bar {
     fill: palevioletred;
 }
+
+.button{
+    width: 10px;
+    height: 20px;
+    border: purple;
+    background: purple;
+}

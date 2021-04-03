@@ -1,0 +1,16 @@
+{
+  "name": "threejs",
+  "version": "1.0.0",
+  "description": "For Visualizing data in D3.js",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Azi Muth",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^6.6.2",
+    "http-server": "h"
+  },
+  "devDependencies": {}
+}

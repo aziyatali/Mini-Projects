@@ -17,8 +17,8 @@ void filter_grayscale(struct image *img, void *weight_arr) {
    *
    * FIX: Initialize both variables to 0.
    */
-  for (unsigned short i; i < img->size_y; i++) {
-    for (unsigned short j; j < img->size_x; j++) {
+  for (unsigned short i = 0; i < img->size_y; i++) {
+    for (unsigned short j = 0; j < img->size_x; j++) {
       double luminosity = 0;
 
       luminosity += weights[0] * image_data[i][j].red;
@@ -179,6 +179,8 @@ int __attribute__((weak)) main(int argc, char *argv[]) {
   /* If the filter takes an argument, copy it */
   if (argv[4]) {
     strcpy(arg, argv[4]);
+
+    
   }
 
   /* Error when loading a png image */
