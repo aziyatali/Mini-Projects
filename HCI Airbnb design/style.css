@@ -29,9 +29,19 @@
     text-align: left;
     padding-top: 25px;
     padding-left: 20px;
-    color:brown;
     display: inline-block;
     border: 1px solid black;
     margin: -0.5px;
     margin-top: -2.5px;
+}
+
+.red{
+    color:red;
+}
+
+.blue{
+    color:blue;
+}
+.chartreuse{
+    color:chartreuse
 }
