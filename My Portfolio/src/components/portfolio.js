@@ -9,7 +9,7 @@ import RightArrow from './images/right-arrow.svg';
 
 import CSSRulePlugin from 'gsap/CSSRulePlugin';
 
-import Me from './images/Me.jpg'
+import Me from '/home/aziyatali/Desktop/Mini-Projects/My Portfolio/src/components/images/me.png'
 
 
 import {TimelineLite, Power3, TweenLite} from 'gsap'

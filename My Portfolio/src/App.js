@@ -23,6 +23,7 @@ function App() {
           <Route exact path="/"><Home/></Route>
           <Route path="/works"><Portfolio/></Route>
           <Route path="/blog"><Blog/></Route>
+          <Route path="/CV"><Profile/></Route>
         </Switch>
         <Footer/>  
       </div>

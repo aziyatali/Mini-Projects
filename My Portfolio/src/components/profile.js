@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import Me from './images/Me.jpg';
+import Me from '/home/aziyatali/Desktop/Mini-Projects/My Portfolio/src/components/images/me.png';
 export default class Profile extends Component{
     render(){
         return(
