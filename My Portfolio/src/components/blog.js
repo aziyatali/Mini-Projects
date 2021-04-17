@@ -24,10 +24,10 @@ export default class Portfolio extends Component{
                 <div className="blog-body">
 
                    <div className = "blog-avatar">
-                             <img src={Me} alt="Me in BAB" width = "1000px" height="750px"></img>
+                             <img src={Me} alt="Me in BAB" width = "280px" height="470px"></img>
                         </div>
  
-                    <div className="cursor-item title2">
+                    <div className="cursor-item title">
                         <div className="blog-body-content2">
                             <h1>
                                  Birthday
