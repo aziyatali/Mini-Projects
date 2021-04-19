@@ -17,25 +17,28 @@ import {TimelineLite, Power3, TweenLite} from 'gsap'
 var pfolio = new Map();
 pfolio= [
   {
+    "image": "https://picsum.photos/500/400",
       "type":"Data Visualization with D3.js",
       "title":"Bouncing Ball",
       "description": "D3.js, Javascript, CSS",
       "url":"https://github.com/aziyatali/Mini-Projects/tree/main/Bouncing%20Ball%20d3.js"
   },
   {
+    "image": "https://picsum.photos/500/400",
       "type": "Building Calculator interface with C++",
       "title": "Scientific Calcualtor with advances function for scientists and engineers",
       "description": "Built by using OOP in C++ ",
       "url": "https://github.com/aziyatali/Mini-Projects/tree/main/Scientific%20Calculator"
   },
   {
+    "image": "https://picsum.photos/500/400",
       "type": "Full Stack app for language exchanging",
       "title": "Learning other languages from native speakers by helping them to learn your language",
       "description": "React, Node.js, Bootstrap, Postgresql",
       "url": "https://github.com/aziyatali/Mini-Projects/tree/main/my-app" 
   },
   {
-      
+    "image": "https://picsum.photos/500/400",
       "type": "Server Client Communication with Python",
       "title": "Server Client Communication",
       "description": "Python",
@@ -164,7 +167,7 @@ export default function Portfolio(){
       fadeOut(0, 1);
       fadeIn(2, 1);
     } else if (imageList.children[1].classList.contains("active-slide")) {
-      setState({ isActive3: false, isActive2: true });
+      setState({ isActive2: false, isActive1: true });
       //Image transition
       slideLeft(0, 0);
       slideRight(0, 1, 0);
@@ -175,7 +178,7 @@ export default function Portfolio(){
       fadeOut(1, 1);
       fadeIn(0, 1);
     } else if (imageList.children[2].classList.contains("active-slide")) {
-      setState({ isActive2: false, isActive1: true });
+      setState({ isActive3: false, isActive2: true });
       slideLeft(2, 1);
       slideLeft(1, 0, 2);
       slideLeft(1, 1);
@@ -184,7 +187,7 @@ export default function Portfolio(){
       fadeOut(2, 1);
       fadeIn(1, 1);
     }else if (imageList.children[3].classList.contains("active-slide")) {
-      setState({ isActive2: true, isActive3: false });
+      setState({ isActive4: false, isActive3: true });
       slideLeft(2, 1);
       slideLeft(1, 0, 2);
       slideLeft(1, 1);
