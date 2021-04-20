@@ -4,7 +4,8 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Blog from './components/blog';
 import Home from './components/home';
-import Portfolio from './components/portfolio';
+import Portfolio from './components/works';
+//import Profile from './components/profile'
 
 import './App.scss';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
@@ -23,7 +24,7 @@ function App() {
           <Route exact path="/"><Home/></Route>
           <Route path="/works"><Portfolio/></Route>
           <Route path="/blog"><Blog/></Route>
-          <Route path="/CV"><Profile/></Route>
+          <Route path="/profile"><Profile/></Route>
         </Switch>
         <Footer/>  
       </div>

@@ -340,23 +340,19 @@ hr.horizontal-line{
   font-family: Arial;
 }
 .blog-body{
-  height: 900px;
+  height: 600px;
   width:1000px;
-}
-.blog-body-content{
-  height:100px;
-  width:500px;
 }
 
 .blog-body-content2{
-  height:120px;
-  width:500px;
+  height:100px;
+  width:400px;
   font-size: 20px;
 }
 
 .blog-avatar{
-  height: 700px;
-  width: 500px;
+  height: 600px;
+  width: 400px;
   float: left;}
 
 // @media (min-width: #{$min_width}px) and (max-width: #{$max_width}px){
@@ -368,4 +364,4 @@ hr.horizontal-line{
 //    :root { 
 //      font-size: #{$max_font}px;
 //    }
-// 
+//   }

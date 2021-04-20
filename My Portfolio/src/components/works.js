@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Badge } from 'react-bootstrap';
-import photo from 'src/components/images/me.png'
 
 var pfolio = new Map();
 pfolio= [
@@ -40,7 +39,7 @@ export default function Works() {
             <div>
                 <div className="work">
                     <Card>
-                        <Card.Img variant="top" src={photo}/>
+                        <Card.Img variant="top" src={value.image}/>
                         <Card.Body>
                             <Card.Title><h4>{value.title}</h4></Card.Title>
                             <Badge variant="secondary">{value.type}</Badge>
